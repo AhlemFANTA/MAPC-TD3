@@ -3,6 +3,7 @@ package td3.api.visitors;
 import java.util.Objects;
 
 public class Client implements Visitable, PrePostVisitable {
+
     private  String name;
 
     public Client(String name) {
@@ -23,12 +24,20 @@ public class Client implements Visitable, PrePostVisitable {
 
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Client client = (Client) o;
-        return name.equals(client.name);
+        return Objects.equals(name, client.name);
     }
 
     @Override

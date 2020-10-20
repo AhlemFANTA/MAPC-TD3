@@ -3,6 +3,11 @@
   <component name="issues">
     <option name="index">
       <map>
+        <entry key="/fragment.java">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/src/main/java/api/AbstractVisitor.java">
           <value>
             <set />
@@ -29,6 +34,16 @@
           </value>
         </entry>
         <entry key="$PROJECT_DIR$/src/main/java/td3/api/main.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/src/main/java/td3/api/main/Main.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/src/main/java/td3/api/main/MyException.java">
           <value>
             <set />
           </value>
@@ -84,6 +99,11 @@
           </value>
         </entry>
         <entry key="$PROJECT_DIR$/src/main/java/td3/api/visitors/PrintRapportCommandes.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/src/main/java/td3/api/visitors/SimplePrinterCommandes.java">
           <value>
             <set />
           </value>

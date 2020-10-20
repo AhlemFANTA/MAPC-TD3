@@ -13,10 +13,11 @@ public class Ligne implements PrePostVisitable{
 
     @Override
     public void accept(PrePostVisitor prePostVisitor) {
+        System.out.println("visit me");
 
     }
     public void accept(Visitor visitor){
-
+        System.out.println("visite me");
     }
 
     public String getName() {
