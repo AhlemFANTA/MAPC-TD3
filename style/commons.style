@@ -1,6 +1,10 @@
 'Style defined by Benjamin Benni during his PhD thesis'
 'Adapted by Sébastien Mosser for INF-5153'
 
+skinparam nodesep 15
+skinparam ranksep 15
+
+
 skinparam noteFontSize 10
 skinparam noteFontName Courier
 

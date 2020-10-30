@@ -1,16 +1,0 @@
-
-T
-java:S1481"2Remove this unused "simpleVisitor" local variable.(å§«˜ÿÿÿÿÿ8ÑóÆ´Ô.
-c
-java:S1854"ARemove this useless assignment to local variable "simpleVisitor".(å§«˜ÿÿÿÿÿ8ÑóÆ´Ô.
-
-java:S1130"qRemove the declaration of thrown exception 'td3.api.main.MyException', as it cannot be thrown from method's body.( Îêû8ÌÎ‰µÔ.
-S
-java:S1854"6Remove this useless assignment to local variable "c2".(ª†Øü8°Ì‡´Ô.
-[
-java:S1854">Remove this useless assignment to local variable "xmlVisitor".(·ç¼8ÑóÆ´Ô.
-L
-java:S1481"/Remove this unused "xmlVisitor" local variable.(·ç¼8ÑóÆ´Ô.
-D
-java:S1481"'Remove this unused "c2" local variable.(ª†Øü8°Ì‡´Ô.
-o	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(„ŸŠ

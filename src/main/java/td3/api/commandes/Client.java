@@ -24,7 +24,10 @@ public class Client implements Visitable, PrePostVisitable {
     @Override
     public void accept(PrePostVisitor prePostVisitor) {
         prePostVisitor.preVisit(this);
-        prePostVisitor.postVisit(this);
+        for(Commande co:commandes.values()){
+            co.accept(prePostVisitor);
+            prePostVisitor.postVisit(this);
+        }
     }
 
     @Override
