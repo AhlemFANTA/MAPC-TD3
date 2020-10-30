@@ -1,0 +1,98 @@
+@startuml classdiagram
+!include ../style/commons.style
+
+title DP Visitor
+
+package  td3.api{
+
+    package visitor {
+        interface AbstractVisitor #LightGreen{}
+        interface Visitor #LightGreen extends AbstractVisitor{
+            visit(groupeClient:GroupeClient) :  void
+            visit(client:Client) :  void
+            visit(commande:Commande) :  void
+            visit(ligne:Ligne) :  void
+        }
+        interface PrePostVisitor #LightGreen extends AbstractVisitor {
+            preVisit(groupeClient:GroupeClient) : void
+            preVisit(client:Client) : void
+            preVisit(commande:Commande) : void
+            preVisit(ligne:Ligne) : void
+            postVisit(groupeClient:GroupeClient) : void
+            postVisit(client:Client) : void
+            postVisit(commande:Commande) : void
+            postVisit(ligne:Ligne) : void
+        }
+        interface Visitable #LightGreen {
+            accept(visitor:Visitor) : void
+        }
+        interface PrePostVisitable #LightGreen extends AbstractVisitor {
+            accept(prePostVisitor:PrePostVisitor) : void
+        }
+        class PrintRapportCommandes implements Visitor {
+            ~this():PrintRapportCommandes
+        }
+        class SimplePrinterCommandes implements Visitor {
+            -info:Map<String, Integer>
+            -sommeCourante:int
+            ~this():SimplePrinterCommandes
+        }
+        class XMlRapportCommandes implements PrePostVisitor{
+            ~this():XMlRapportCommandes
+        }
+    }
+    package commandes{
+        class Client implements Visitable, PrePostVisitable{
+            -name:String
+            ~this(String name):Client
+            +addCommande(Commande commande):void
+            +addLigne(Ligne ligne):void
+        }
+
+        class Commande implements Visitable, PrePostVisitable{
+            -name : String
+            -lignes : HashMap<String, Ligne>
+            ~this(name:String):Commande
+            +addLigne(ligne:Ligne):void
+            +getName:String
+            +setName(name:String):void
+        }
+
+        class GroupeClient implements PrePostVisitable {
+            -name:String
+            -static clients : Map<String,Client>
+            +this(name:String):GroupeClient
+        }
+
+        class Ligne implements PrePostVisitable {
+            -Sname:tring
+            -sum:int
+            +this(name:String,sum:int):Ligne
+        }
+
+    }
+
+    package exceptions{
+        class MonException{
+            +this(erreur:String):MonException
+        }
+    }
+
+    package main  #yellow {
+        class AppMain {
+            -final groupeClient:GroupeClient
+            -visiteur:AbstractVisitor
+            +this(nomGroupe:String):AppMain
+            +setVisiteur(v:AbstractVisitor)
+            +main(args:String[]):void
+        }
+    }
+
+    visitor<..commandes
+    main-->commandes : utilise
+    main-->visitor : utilise
+    exceptions<..visitor : renvoie
+
+}
+
+@enduml

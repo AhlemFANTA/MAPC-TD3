@@ -1,6 +1,11 @@
 package td3.api.visitors;
 
-public interface PrePostVisitor {
+import td3.api.commandes.Client;
+import td3.api.commandes.Commande;
+import td3.api.commandes.GroupeClient;
+import td3.api.commandes.Ligne;
+
+public interface PrePostVisitor extends AbstractVisitor {
 
     void preVisit(GroupeClient groupeClient);
     void preVisit(Client client);

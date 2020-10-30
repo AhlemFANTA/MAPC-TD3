@@ -1,8 +1,12 @@
-package td3.api.visitors;
+package td3.api.commandes;
+
+import td3.api.visitors.PrePostVisitable;
+import td3.api.visitors.PrePostVisitor;
+import td3.api.visitors.Visitor;
 
 import java.util.Objects;
 
-public class Ligne implements PrePostVisitable{
+public class Ligne implements PrePostVisitable {
     private String name;
     private int  sum;
 
@@ -10,14 +14,8 @@ public class Ligne implements PrePostVisitable{
         this.name = name;
         this.sum = sum;
     }
-
-    @Override
-    public void accept(PrePostVisitor prePostVisitor) {
-        System.out.println("visit me");
-
-    }
     public void accept(Visitor visitor){
-        System.out.println("visite me");
+        visitor.visit(this);
     }
 
     public String getName() {
@@ -37,6 +35,13 @@ public class Ligne implements PrePostVisitable{
     }
 
     @Override
+    public void accept(PrePostVisitor prePostVisitor) {
+        prePostVisitor.preVisit(this);
+        prePostVisitor.postVisit(this);
+
+    }
+
+    @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
@@ -48,5 +53,13 @@ public class Ligne implements PrePostVisitable{
     @Override
     public int hashCode() {
         return Objects.hash(name, sum);
+    }
+
+    @Override
+    public String toString() {
+        return "Ligne{" +
+                "name='" + name + '\'' +
+                ", sum=" + sum +
+                '}';
     }
 }
