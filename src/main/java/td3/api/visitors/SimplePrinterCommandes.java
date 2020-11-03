@@ -10,7 +10,7 @@ import java.util.Map;
 
 public class SimplePrinterCommandes implements Visitor {
 
-    private Map<String, Integer> info;
+    private Map<String, Integer> info; // associe a un client la somme dû
     private int sommeCourante;
 
     public SimplePrinterCommandes() {
@@ -20,20 +20,22 @@ public class SimplePrinterCommandes implements Visitor {
 
     @Override
     public void visit(GroupeClient groupeClient) {
-        for(String k: info.keySet()){
-            System.out.println(String.format("Le client %s doit %d", k, info.get(k)));
+        for (Client c : groupeClient.getClients()) {
+            c.accept(this);
+            System.out.println(String.format("Le client %s doit %d", c.getName(), info.get(c.getName())));
         }
     }
 
     @Override
     public void visit(Client client) {
-        info.put(client.getName(), sommeCourante);
         sommeCourante = 0;
+        for (Commande commande : client.getCommandes()) commande.accept(this);
+        info.put(client.getName(), sommeCourante);
     }
 
     @Override
     public void visit(Commande commande) {
-        System.out.println(String.format("je visite une commande %s", commande.getName()));
+        for (Ligne l : commande.getLignes()) l.accept(this);
     }
 
     @Override

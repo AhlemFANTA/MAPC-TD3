@@ -9,12 +9,12 @@ public class PrintRapportCommandes implements Visitor {
 
     @Override
     public void visit(GroupeClient groupeClient) {
-        System.out.println(String.format("je visite un groupeClient %s", groupeClient.toString()));
+        System.out.println(String.format("je visite un groupeClient %s", groupeClient.getName()));
     }
 
     @Override
     public void visit(Client client) {
-        System.out.println(String.format("je visite un client %s", client.toString()));
+        System.out.println(String.format("je visite un client %s", client.getName()));
     }
 
     @Override

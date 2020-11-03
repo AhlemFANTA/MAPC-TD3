@@ -5,18 +5,23 @@ import td3.api.visitors.PrePostVisitor;
 import td3.api.visitors.Visitable;
 import td3.api.visitors.Visitor;
 
+import java.util.Collection;
 import java.util.HashMap;
 
 public class Commande implements PrePostVisitable, Visitable {
     private  String name;
-    private final HashMap<String, Ligne> lignes;
+    private final HashMap<String, Ligne> lignes; // map nomLigne --> ligne
 
     public Commande(String name) {
         this.name = name;
-        this.lignes = new HashMap<String, Ligne>();
+        this.lignes = new HashMap<>();
     }
     void addLigne(Ligne ligne){
         lignes.put(ligne.getName(),ligne);
+    }
+
+    public Collection<Ligne> getLignes() {
+        return lignes.values();
     }
 
     public String getName() {
@@ -37,10 +42,7 @@ public class Commande implements PrePostVisitable, Visitable {
 
     @Override
     public void accept(Visitor visitor) {
-        visitor.visit((this));
-        for(Ligne l : lignes.values()){
-            l.accept(visitor);
-        }
+        visitor.visit(this);
     }
 
     @Override

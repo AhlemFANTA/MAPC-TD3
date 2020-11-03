@@ -2,20 +2,16 @@ package td3.api.commandes;
 
 import td3.api.visitors.*;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Objects;
+import java.util.*;
 
 public class Client implements Visitable, PrePostVisitable {
 
     private  String name;
     private Map<String,Commande> commandes;
-    private Map<String,Ligne> lignes;
 
     public Client(String name) {
         this.name = name;
         this.commandes = new HashMap<>();
-        this.lignes = new HashMap<>();
     }
     void addCommande(Commande commande){
         commandes.put(commande.getName(), commande);
@@ -57,8 +53,14 @@ public class Client implements Visitable, PrePostVisitable {
         return Objects.hash(name);
     }
 
-    public void addLigne(Ligne ligne) {
-        lignes.put(ligne.getName(), ligne);
+    // Ajoute une ligne a une commande du client
+    public void addLigne(String nomCommande, Ligne ligne)
+    {
+        commandes.get(nomCommande).addLigne(ligne);
+    }
+
+    public Collection<Commande> getCommandes() {
+        return commandes.values();
     }
 
     @Override

@@ -53,7 +53,6 @@ public final class Main {
         m.groupeClient.addLigne("joe", "cde3", l4);
 
 
-
         m.setVisiteur(simpleVisitor);
         m.groupeClient.accept((Visitor) m.visiteur);
 
